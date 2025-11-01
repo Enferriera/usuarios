@@ -1,0 +1,35 @@
+# Archivos de build
+build/
+.gradle/
+bin/
+out/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+
+# Archivos temporales
+*.tmp
+*.swp
+*.bak
+
+# Documentación generada
+build/docs/
+
+# Variables de entorno locales
+.env
+.env.local

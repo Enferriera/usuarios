@@ -1,0 +1,75 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.6'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'org.jcr'
+version = '0.0.1-SNAPSHOT'
+description = 'usuarios-en-memoria'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+// Configuración del JAR ejecutable
+bootJar {
+    archiveFileName = 'usuarios-api.jar'
+    mainClass = 'org.jcr.usuariosenmemoria.UsuariosEnMemoriaApplication'
+}
+
+// Deshabilitar el JAR plano (solo necesitamos el bootJar)
+jar {
+    enabled = false
+}
+
+dependencies {
+
+    // Spring Doc + OpenAPI
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.8'
+
+    // JPA + Spring Data
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Base de datos H2
+    implementation 'com.h2database:h2'
+
+    // Para crear endpoints REST
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Para validaciones con anotaciones (@NotBlank, @Email, etc.)
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Para generar getters/setters automáticamente
+    implementation 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Herramientas útiles durante desarrollo (reinicio rápido, etc.)
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // Dependencias de test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// Configuración de JavaDoc para ignorar advertencias
+javadoc {
+    options.encoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('docencoding', 'UTF-8')
+}
