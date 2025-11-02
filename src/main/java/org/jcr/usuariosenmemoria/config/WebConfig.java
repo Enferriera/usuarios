@@ -296,7 +296,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedOrigins(
                         "http://localhost:3000",                        // React, Vue, Next.js dev
                         "http://localhost:4200",                        // Angular dev
-                        "https://vercel-livid-nine-35.vercel.app"      // Aplicación en Vercel (producción)
+                        "https://vercel-livid-nine-35.vercel.app",      // Aplicación en Vercel 1
+                        "https://vercel2-alpha-eosin.vercel.app"        // Aplicación en Vercel 2 (producción)
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
